@@ -25,11 +25,11 @@ const SMOOTH_HAND_SECOND = false;
 let D2R = (deg) => deg * (Math.PI / 180);
 let FixedAngle = (a) => a - 90;
 
-let HandStartX = (angle) => CLOCK_RADIUS - HAND_OFFSET * Math.cos(angle);
-let HandStartY = (angle) => CLOCK_RADIUS - HAND_OFFSET * Math.sin(angle);
+let HandStartX = (angle) => CENTER_X - HAND_OFFSET * Math.cos(angle);
+let HandStartY = (angle) => CENTER_Y - HAND_OFFSET * Math.sin(angle);
 
-let HandEndX = (length, angle) => CLOCK_RADIUS + length * Math.cos(angle);
-let HandEndY = (length, angle) => CLOCK_RADIUS + length * Math.sin(angle);
+let HandEndX = (length, angle) => CENTER_X + length * Math.cos(angle);
+let HandEndY = (length, angle) => CENTER_Y + length * Math.sin(angle);
 
 function getClockData() {
     time = new Date();
@@ -53,8 +53,8 @@ function draw(ctx) {
     for (let a = 0; a < 360; a += 6) {
         let len = a % 30 ? BAR_LENGTH_SHORT : BAR_LENGTH_LONG;
         let aRad = D2R(a);
-        ctx.moveTo(CLOCK_RADIUS + (BAR_OFFSET - len) * Math.cos(aRad), CLOCK_RADIUS + (BAR_OFFSET - len) * Math.sin(aRad));
-        ctx.lineTo(CLOCK_RADIUS + BAR_OFFSET * Math.cos(aRad), CLOCK_RADIUS + BAR_OFFSET * Math.sin(aRad));
+        ctx.moveTo(CENTER_X + (BAR_OFFSET - len) * Math.cos(aRad), CENTER_Y + (BAR_OFFSET - len) * Math.sin(aRad));
+        ctx.lineTo(CENTER_X + BAR_OFFSET * Math.cos(aRad), CENTER_Y + BAR_OFFSET * Math.sin(aRad));
     }
     let t = getClockData();
     let sRadFixed = D2R(FixedAngle(t.s_alfa));
