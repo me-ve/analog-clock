@@ -1,0 +1,10 @@
+body {
+    background-color: #62708a;
+    color: snow;
+    font-family: 'Helvetica';
+}
+
+#canvasDiv {
+    width: 256px;
+    height: 256px;
+}
